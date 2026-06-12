@@ -47,7 +47,7 @@ Each new post is a standalone HTML file following the same template as `blog_bio
 |----------|-----|
 | Zenodo | https://zenodo.org/records/18927154 |
 | ORCID | https://orcid.org/0009-0001-0328-2299 |
-| Substack | *The Medium — A New Starting Point* |
+| Substack | https://bradleykdepuy.substack.com/ |
 | GitHub | https://github.com/bkdepuy/The-Medium |
 
 ---
