@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — The Medium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --night:  #1a1f1a;
+      --cream:  #e8e2d4;
+      --sage:   #8fa68a;
+      --rust:   #b5541c;
+      --gold:   #c9a84c;
+      --ink:    #2c2c28;
+      --mist:   #f2ede4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--mist);
+      color: var(--ink);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--night);
+      color: var(--cream);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .site-name {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .site-name:hover { color: var(--cream); }
+
+    /* NAV */
+    nav {
+      background: var(--night);
+      border-top: 1px solid rgba(143,166,138,0.2);
+      padding: 0 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+
+    nav a {
+      display: inline-block;
+      color: var(--cream);
+      text-decoration: none;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1rem 1.75rem;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      opacity: 0.75;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+      opacity: 1;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 0;
+    }
+
+    .page-eyebrow {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 1rem;
+    }
+
+    .page-title {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--night);
+      margin-bottom: 0.5rem;
+    }
+
+    .page-dateline {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--sage);
+      margin-bottom: 2.5rem;
+    }
+
+    .page-rule {
+      border: none;
+      border-top: 1px solid rgba(44,44,40,0.2);
+      margin-bottom: 3rem;
+    }
+
+    /* ARTICLE */
+    article {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    article p {
+      margin-bottom: 1.4rem;
+      font-size: 1.05rem;
+      color: #3a3a35;
+    }
+
+    article h2 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--night);
+      margin: 3rem 0 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(44,44,40,0.12);
+    }
+
+    article .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2.5rem 0;
+    }
+
+    article .section-rule::before,
+    article .section-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--sage);
+      opacity: 0.4;
+    }
+
+    article .section-rule span {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      color: var(--sage);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    article .closing {
+      font-style: italic;
+      color: var(--ink);
+      opacity: 0.6;
+      font-size: 0.95rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(44,44,40,0.15);
+      line-height: 1.9;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--night);
+      color: var(--cream);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-title {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--sage);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .footer-links a:hover { opacity: 1; }
+
+    .footer-orcid {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      opacity: 0.35;
+      letter-spacing: 0.05em;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    article { animation: fadeUp 0.7s ease both; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="site-name">The Medium — A New Starting Point</a>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="medium.html">The Framework</a>
+    <a href="renewal.html">Renewal</a>
+    <a href="about.html" class="active">About</a>
+    <a href="https://zenodo.org/records/18927154" target="_blank" rel="noopener">Zenodo</a>
+    <a href="https://substack.com" target="_blank" rel="noopener">Substack</a>
+  </nav>
+
+  <div class="page-header">
+    <p class="page-eyebrow">About the author</p>
+    <h1 class="page-title">A Life Taken as It Came</h1>
+    <p class="page-dateline">Bradley K. DePuy — Levy County, Florida, 2026</p>
+    <hr class="page-rule">
+  </div>
+
+  <article>
+
+    <p>I grew up in Candor, a small crossroads town in Tioga County, upstate New York — a place that was, in ways I couldn't have articulated as a boy, two worlds at once. On one side were the dairy farms rolling across the surrounding hills, families like the Craigs whose mothers carried Personious maiden names and generations of land knowledge in their hands. On the other were IBM Federal Systems engineers who had moved into the community and kept, in their basements, full-scale wooden mockups of computer mechanisms they were designing a few miles away in Owego.</p>
+
+    <p>I moved freely between those worlds and belonged fully to neither. What I belonged to was the land itself — the woods I entered alone, the fields next door where corn was planted and harvested before my elementary school was built on that ground, the farm in the hills where different animals and different crops fed one another in a complete and beautiful loop I would spend the rest of my life trying to understand and recreate. My mother kept an old school bell. When it rang across the fields and through the trees, it was time to come home.</p>
+
+    <p>On Saturday mornings I listened to Dr. Peter Paul Kellogg and Arthur Allen on the radio — the founders and architects of the Cornell Lab of Ornithology, broadcasting their bird programs from a few miles up the road at Sapsucker Woods. I visited the Lab often. I walked the trails. I sat by the pond. The boy who sat by that pond was paying the kind of attention that lasts.</p>
+
+    <div class="section-rule"><span>IBM · Army · Apollo</span></div>
+
+    <h2>The Machine at Its Foundation</h2>
+
+    <p>When I was old enough to work summers, I found my way to the IBM plant in Owego — the Federal Systems Division that handled defense and space contracts. One summer I spent in reproduction, copying large-format blueprints of computer circuits and technology documentation. The next I was building circuit boards for the Apollo program. My hands touched hardware that went to the moon.</p>
+
+    <p>After three years in the Army I returned to work at IBM's Vestal facility as a programming clerk. Programmers handed me handwritten assembly language coding sheets. I keyed them into a teletype machine, drove to the main plant in Endicott to collect trays of punched cards, brought them back to Vestal, and printed the output on a System/360 Model 20. I also built the larger backplane boards for the 360 line itself. I was present, in a completely physical and tangible way, at two of the most consequential developments in computing history — before software had become abstract enough for most people to stop thinking about what it actually was.</p>
+
+    <p>The Vestal position was temporary. I had just married Donna. I needed work I could depend on. I left IBM and went to work for New York State Electric and Gas — garage laborer, meter reader, master mechanic. When NYSEG began training internal people to program their infrastructure systems, I sat the test. My background made me a natural candidate even if my resume didn't show it. I became a PL/1 and IMS programmer, working on the data systems of a major utility with a hands-on understanding of what that infrastructure actually did.</p>
+
+    <div class="section-rule"><span>Donna · Saudi Arabia</span></div>
+
+    <h2>Why Not</h2>
+
+    <p>An advertisement in Computer World changed everything. A company in Saudi Arabia was looking for a PL/1 and IMS programmer at twice my current salary. I drove home and asked Donna if she wanted to go to Saudi Arabia.</p>
+
+    <p>She said: <em>Why not.</em></p>
+
+    <p>We landed in Dhahran at night. The lights were beautiful. The next morning across the street was a rail terminal loading tank cars with oil. On each side of the hotel were large pipe laydown yards. Donna looked at it and said: <em>Why in hell did they build a hotel here.</em></p>
+
+    <p>Both answers were completely honest. Both were exactly right. That is the shape of fifty-six years together.</p>
+
+    <div class="section-rule"><span>Dhahran · 1979–1995</span></div>
+
+    <h2>Dhahran</h2>
+
+    <p>We lived in Dhahran from 1979 to 1986, returned home voluntarily — I was not, as the British oil industry phrase has it, surplused — and came back from 1988 to 1995. Fifteen years at the operational heart of the global energy economy, building and maintaining the data systems that managed the flow of oil the world ran on.</p>
+
+    <p>Donna built her own career entirely. During the Gulf War she managed the Associated Press bureau in Dhahran — the operational infrastructure of the world's primary wire service covering the most watched military conflict since Vietnam. Every dispatch filed to the world's newspapers moved through the office she ran. I would wait for her day to end, passing the time chatting with a young AP correspondent named John King. After the war Donna's work was recognized by her supervisor, Edie Lederer, head of the AP's United Nations bureau — one of the most accomplished wire service journalists of her generation.</p>
+
+    <p>In Dhahran our son was killed in an automobile accident. We had a very hard time for a while. We found our way back to each other. We came home.</p>
+
+    <div class="section-rule"><span>Levy County · Florida</span></div>
+
+    <h2>Levy County</h2>
+
+    <p>We came eventually to approximately two and a half acres in rural Levy County, Florida — not by plan, but because that is how most of the significant things in my life have arrived. We have spent twelve years turning it into something rare: a functioning native wildlife sanctuary with hand-dug pond, native plantings, birdbaths, feeding stations, and a woodland edge that has attracted and retained a community of resident and migratory wildlife.</p>
+
+    <p>The crows come at noon for raw peanuts, a bonded pair arriving first, the family group following. The rabbits stay close while Donna picks beans. An armadillo mother once brought her four young through the garden beds. A raccoon befriended our cat and visited in daylight for months. Last week Donna spotted an American redstart from the back porch — a bird I had last seen along a creek in upstate New York while fishing, a moment I had carried for fifty years.</p>
+
+    <div class="section-rule"><span>The Continuity</span></div>
+
+    <h2>The Continuity</h2>
+
+    <p>What connects Apollo circuit boards and a hand-dug wildlife pond, PL/1 code and wiregrass plantings, the Personious farm in the Tioga County hills and The Medium's eternal plenum, is not a plan. It is a person — consistent in curiosity, attentive to what is actually in front of him, willing to say why not, capable of loss and continuation, building things that take time and patience at the edge between the human and the wild.</p>
+
+    <p>The boy who heard his mother's bell and came home from the woods is recognizably the same man watching the crow family from the screened porch in the early morning before the Florida heat arrives.</p>
+
+    <p>That is a rare kind of integrity across a lifetime.</p>
+
+    <div class="closing">
+      Bradley K. DePuy<br>
+      Independent Researcher<br>
+      ORCID: <a href="https://orcid.org/0009-0001-0328-2299" style="color:inherit;">0009-0001-0328-2299</a><br>
+      Levy County, Florida — 2026
+    </div>
+
+  </article>
+
+  <footer>
+    <p class="footer-title">The Medium</p>
+    <p style="font-size:0.9rem; opacity:0.5; margin-top:0.25rem;">A New Starting Point</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="medium.html">Framework</a>
+      <a href="renewal.html">Renewal</a>
+      <a href="https://zenodo.org/records/18927154" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <p class="footer-orcid">Bradley K. DePuy · ORCID 0009-0001-0328-2299 · Levy County, Florida</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Framework — The Medium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --night:  #1a1f1a;
+      --cream:  #e8e2d4;
+      --sage:   #8fa68a;
+      --rust:   #b5541c;
+      --gold:   #c9a84c;
+      --ink:    #2c2c28;
+      --mist:   #f2ede4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--mist);
+      color: var(--ink);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    header {
+      background: var(--night);
+      color: var(--cream);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .site-name {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .site-name:hover { color: var(--cream); }
+
+    nav {
+      background: var(--night);
+      border-top: 1px solid rgba(143,166,138,0.2);
+      padding: 0 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      display: inline-block;
+      color: var(--cream);
+      text-decoration: none;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1rem 1.75rem;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      opacity: 0.75;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+      opacity: 1;
+    }
+
+    .page-header {
+      background: var(--night);
+      color: var(--cream);
+      padding: 4rem 2rem 3.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(143,166,138,0.15);
+    }
+
+    .page-eyebrow {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1.25rem;
+    }
+
+    .page-title {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 500;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .page-intro {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      color: rgba(232,226,212,0.7);
+      font-style: italic;
+    }
+
+    /* primitive display */
+    .primitive-strip {
+      background: var(--night);
+      border-top: 1px solid rgba(143,166,138,0.15);
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .primitive {
+      text-align: center;
+    }
+
+    .primitive-symbol {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 2.5rem;
+      font-style: italic;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+
+    .primitive-label {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-top: 0.4rem;
+      display: block;
+    }
+
+    /* main content */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* propositions */
+    .propositions {
+      margin-bottom: 4rem;
+    }
+
+    .proposition {
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      gap: 1.5rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid rgba(44,44,40,0.1);
+      align-items: start;
+    }
+
+    .proposition:first-child { border-top: 1px solid rgba(44,44,40,0.1); }
+
+    .prop-number {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.1rem;
+      color: var(--sage);
+      font-style: italic;
+      padding-top: 0.2rem;
+    }
+
+    .prop-content h3 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--night);
+      margin-bottom: 0.5rem;
+    }
+
+    .prop-content p {
+      font-size: 0.97rem;
+      color: #4a4a44;
+      line-height: 1.75;
+    }
+
+    /* links section */
+    .framework-links {
+      background: var(--night);
+      border-radius: 2px;
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .framework-links h2 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--sage);
+      margin-bottom: 1.5rem;
+    }
+
+    .link-item {
+      display: flex;
+      align-items: baseline;
+      gap: 1.25rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(143,166,138,0.15);
+      text-decoration: none;
+    }
+
+    .link-item:last-child { border-bottom: none; }
+
+    .link-label {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      white-space: nowrap;
+      min-width: 80px;
+    }
+
+    .link-title {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      color: var(--cream);
+      transition: color 0.2s;
+    }
+
+    .link-item:hover .link-title { color: var(--gold); }
+
+    /* context note */
+    .context-note {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: #5a5a52;
+      border-left: 2px solid var(--sage);
+      padding: 1rem 1.5rem;
+      margin: 3rem 0;
+      line-height: 1.8;
+    }
+
+    footer {
+      background: var(--night);
+      color: var(--cream);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-title {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--sage);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .footer-links a:hover { opacity: 1; }
+    .footer-orcid { margin-top: 1.5rem; font-size: 0.8rem; opacity: 0.35; letter-spacing: 0.05em; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    main { animation: fadeUp 0.7s ease both; }
+
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="site-name">The Medium — A New Starting Point</a>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="medium.html" class="active">The Framework</a>
+    <a href="renewal.html">Renewal</a>
+    <a href="about.html">About</a>
+    <a href="https://zenodo.org/records/18927154" target="_blank" rel="noopener">Zenodo</a>
+    <a href="https://substack.com" target="_blank" rel="noopener">Substack</a>
+  </nav>
+
+  <div class="page-header">
+    <p class="page-eyebrow">Foundational Physics &amp; Philosophy</p>
+    <h1 class="page-title">The Medium</h1>
+    <p class="page-intro">A framework built from first principles — asking what must be true of whatever underlies physical reality before space, time, particles, and observers are assumed.</p>
+  </div>
+
+  <div class="primitive-strip">
+    <div class="primitive">
+      <span class="primitive-symbol">ι</span>
+      <span class="primitive-label">Iota — the primitive</span>
+    </div>
+    <div class="primitive">
+      <span class="primitive-symbol">κ</span>
+      <span class="primitive-label">Co-manifestation</span>
+    </div>
+    <div class="primitive">
+      <span class="primitive-symbol">Κ</span>
+      <span class="primitive-label">The plenum</span>
+    </div>
+    <div class="primitive">
+      <span class="primitive-symbol">H</span>
+      <span class="primitive-label">Hamiltonian emergence</span>
+    </div>
+  </div>
+
+  <main>
+
+    <blockquote class="context-note">
+      The Medium begins before the standard model, before quantum mechanics, before spacetime. It asks: what are the minimum conditions for anything to exist at all? Two primitives — distinction and relation — are sufficient. Everything else is emergent.
+    </blockquote>
+
+    <section class="propositions">
+
+      <div class="proposition">
+        <span class="prop-number">I.</span>
+        <div class="prop-content">
+          <h3>The Plenum is primary</h3>
+          <p>Reality is not a void punctuated by matter. It is an irreducibly active plenum — a medium that is never empty, never static, never at rest. The void is the complement of the plenum, not its default state. There was no beginning from nothing.</p>
+        </div>
+      </div>
+
+      <div class="proposition">
+        <span class="prop-number">II.</span>
+        <div class="prop-content">
+          <h3>Two primitives are sufficient</h3>
+          <p>Distinction and relation — the capacity to differentiate and the capacity to connect — are the minimum conditions for structure to exist. From these two primitives, the algebraic hierarchy that physics recognizes can be derived rather than assumed.</p>
+        </div>
+      </div>
+
+      <div class="proposition">
+        <span class="prop-number">III.</span>
+        <div class="prop-content">
+          <h3>Iota (ι) is the primitive unit</h3>
+          <p>A Planck-scale bounded region of irreducible activity — not a particle, not a wave, not a field in the standard sense. The substrate from which space, geometry, and quantum behavior emerge rather than the contents of a pre-existing spacetime.</p>
+        </div>
+      </div>
+
+      <div class="proposition">
+        <span class="prop-number">IV.</span>
+        <div class="prop-content">
+          <h3>Space, time, and geometry are emergent</h3>
+          <p>They are not the stage on which physics occurs. They are features that arise from the relational structure of the plenum as observed by carbon-based biological observers. The Wheeler-DeWitt equation — which contains no time variable — is consistent with this conclusion.</p>
+        </div>
+      </div>
+
+      <div class="proposition">
+        <span class="prop-number">V.</span>
+        <div class="prop-content">
+          <h3>The framework is a philosophical treatise</h3>
+          <p>The Medium does not compete with the standard model or general relativity as a predictive physics theory. It asks the prior question — what must be true for those theories to be possible at all — and offers a substrate-level answer. It is positioned in the tradition of Spinoza, Leibniz, and Whitehead rather than as a rival to string theory or loop quantum gravity.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="framework-links">
+      <h2>Read the work</h2>
+
+      <a href="https://zenodo.org/records/18927154" target="_blank" rel="noopener" class="link-item">
+        <span class="link-label">Zenodo</span>
+        <span class="link-title">The Medium — Published framework, concept DOI: 10.5281/zenodo.18927154</span>
+      </a>
+
+      <a href="https://orcid.org/0009-0001-0328-2299" target="_blank" rel="noopener" class="link-item">
+        <span class="link-label">ORCID</span>
+        <span class="link-title">Bradley K. DePuy — 0009-0001-0328-2299</span>
+      </a>
+
+      <a href="https://substack.com" target="_blank" rel="noopener" class="link-item">
+        <span class="link-label">Substack</span>
+        <span class="link-title">The Medium — A New Starting Point</span>
+      </a>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <p class="footer-title">The Medium</p>
+    <p style="font-size:0.9rem; opacity:0.5; margin-top:0.25rem;">A New Starting Point</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="renewal.html">Renewal</a>
+      <a href="about.html">About</a>
+      <a href="https://zenodo.org/records/18927154" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <p class="footer-orcid">Bradley K. DePuy · ORCID 0009-0001-0328-2299 · Levy County, Florida</p>
+  </footer>
+
+</body>
+</html>
