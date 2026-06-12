@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Medium — A New Starting Point</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --night:    #1a1f1a;
+      --cream:    #e8e2d4;
+      --sage:     #8fa68a;
+      --rust:     #b5541c;
+      --gold:     #c9a84c;
+      --ink:      #2c2c28;
+      --mist:     #f2ede4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--mist);
+      color: var(--ink);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--night);
+      color: var(--cream);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(143,166,138,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .site-title {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--cream);
+      line-height: 1.1;
+      position: relative;
+    }
+
+    .site-title em {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    .site-subtitle {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-style: italic;
+      color: var(--sage);
+      margin-top: 0.75rem;
+      letter-spacing: 0.08em;
+      position: relative;
+    }
+
+    /* field journal rule — the signature element */
+    .journal-rule {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2.5rem auto 0;
+      max-width: 480px;
+      position: relative;
+    }
+
+    .journal-rule::before,
+    .journal-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--sage);
+      opacity: 0.5;
+    }
+
+    .journal-rule span {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      color: var(--sage);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--night);
+      border-top: 1px solid rgba(143,166,138,0.2);
+      padding: 0 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+
+    nav a {
+      display: inline-block;
+      color: var(--cream);
+      text-decoration: none;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1rem 1.75rem;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      opacity: 0.75;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+      opacity: 1;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* ── OPENING ── */
+    .opening {
+      margin-bottom: 4rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid rgba(44,44,40,0.15);
+    }
+
+    .opening-eyebrow {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 1.25rem;
+    }
+
+    .opening h2 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 500;
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+      color: var(--night);
+    }
+
+    .opening p {
+      font-size: 1.05rem;
+      color: #3a3a35;
+      max-width: 680px;
+    }
+
+    .opening p + p { margin-top: 1rem; }
+
+    .read-more {
+      display: inline-block;
+      margin-top: 1.75rem;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: var(--rust);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rust);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .read-more:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    /* ── TWO STREAMS ── */
+    .streams {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid rgba(44,44,40,0.15);
+    }
+
+    @media (max-width: 640px) {
+      .streams { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    .stream-eyebrow {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .stream--medium .stream-eyebrow { color: var(--sage); }
+    .stream--renewal .stream-eyebrow { color: var(--rust); }
+
+    .stream h3 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      color: var(--night);
+      line-height: 1.3;
+    }
+
+    .stream p {
+      font-size: 0.95rem;
+      color: #4a4a44;
+      line-height: 1.7;
+    }
+
+    .stream-link {
+      display: inline-block;
+      margin-top: 1.25rem;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      padding-bottom: 1px;
+      border-bottom: 1px solid;
+      transition: opacity 0.2s;
+    }
+
+    .stream--medium .stream-link { color: var(--sage); border-color: var(--sage); }
+    .stream--renewal .stream-link { color: var(--rust); border-color: var(--rust); }
+    .stream-link:hover { opacity: 0.65; }
+
+    /* ── RECENT POSTS ── */
+    .recent-label {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.5;
+      margin-bottom: 2rem;
+    }
+
+    .post-list {
+      list-style: none;
+    }
+
+    .post-list li {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(44,44,40,0.1);
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+    }
+
+    .post-list li:first-child { border-top: 1px solid rgba(44,44,40,0.1); }
+
+    .post-tag {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      min-width: 80px;
+    }
+
+    .post-tag--medium { color: var(--sage); }
+    .post-tag--renewal { color: var(--rust); }
+
+    .post-list a {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.1rem;
+      color: var(--night);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .post-list a:hover { border-bottom-color: var(--ink); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--night);
+      color: var(--cream);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-title {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--sage);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .footer-links a:hover { opacity: 1; }
+
+    .footer-orcid {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      opacity: 0.35;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── FADE IN ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header, .opening, .streams, .post-list {
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .streams { animation-delay: 0.15s; }
+    .post-list { animation-delay: 0.25s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 class="site-title">The <em>Medium</em></h1>
+    <p class="site-subtitle">A New Starting Point</p>
+    <div class="journal-rule">
+      <span>Bradley K. DePuy — Levy County, Florida</span>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#framework">The Framework</a>
+    <a href="#renewal">Renewal</a>
+    <a href="about.html">About</a>
+    <a href="https://zenodo.org/records/18927154" target="_blank" rel="noopener">Zenodo</a>
+    <a href="https://substack.com" target="_blank" rel="noopener">Substack</a>
+  </nav>
+
+  <main>
+
+    <!-- Opening statement -->
+    <section class="opening">
+      <p class="opening-eyebrow">On this site</p>
+      <h2>What must be true of whatever underlies everything — and how we choose to live inside it.</h2>
+      <p>This is the home of two connected inquiries. The first is a foundational framework in physics and philosophy called The Medium — built from first principles, outside institutions, asking what reality actually is before space, time, and observers are assumed. The second is a broader renewal message: what a long life of paying close attention to the world suggests about what matters and what doesn't.</p>
+      <p>They are expressions of the same underlying conviction. The universe is irreducibly active. Attention is the appropriate response.</p>
+      <a href="about.html" class="read-more">About the author →</a>
+    </section>
+
+    <!-- Two streams -->
+    <section class="streams">
+
+      <div class="stream stream--medium" id="framework">
+        <p class="stream-eyebrow">The Framework</p>
+        <h3>The Medium — A New Starting Point</h3>
+        <p>A foundational framework built from two primitives — distinction and relation — that treats space, time, geometry, and quantum behavior as emergent rather than given. Published on Zenodo. Developed outside academic institutions from genuine curiosity about what physical reality actually is.</p>
+        <a href="medium.html" class="stream-link">Explore the framework →</a>
+      </div>
+
+      <div class="stream stream--renewal" id="renewal">
+        <p class="stream-eyebrow">Renewal</p>
+        <h3>A Life of Paying Attention</h3>
+        <p>Observations from two and a half acres of native Florida wildlife sanctuary, a lifetime of naturalist practice rooted in the Cornell Lab tradition, and seventy-nine years of experiences over material gains. The crow family arrives at noon. The redstart appeared last week. The crows are getting closer.</p>
+        <a href="renewal.html" class="stream-link">Read the renewal writing →</a>
+      </div>
+
+    </section>
+
+    <!-- Recent posts placeholder -->
+    <section>
+      <p class="recent-label">Recent writing</p>
+      <ul class="post-list">
+        <li>
+          <span class="post-tag post-tag--renewal">Renewal</span>
+          <a href="blog_biography.html">A Life Taken as It Came — A Biographical Essay</a>
+        </li>
+        <li>
+          <span class="post-tag post-tag--medium">Framework</span>
+          <a href="https://zenodo.org/records/18927154" target="_blank" rel="noopener">The Medium — Published on Zenodo</a>
+        </li>
+        <li>
+          <span class="post-tag post-tag--renewal">Renewal</span>
+          <a href="#">The Crow Family at Noon — Coming soon</a>
+        </li>
+        <li>
+          <span class="post-tag post-tag--medium">Framework</span>
+          <a href="#">The Void and the Plenum — Coming soon</a>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p class="footer-title">The Medium</p>
+    <p style="font-size:0.9rem; opacity:0.5; margin-top:0.25rem;">A New Starting Point</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="medium.html">Framework</a>
+      <a href="renewal.html">Renewal</a>
+      <a href="https://zenodo.org/records/18927154" target="_blank" rel="noopener">Zenodo</a>
+      <a href="https://substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <p class="footer-orcid">Bradley K. DePuy · ORCID 0009-0001-0328-2299 · Levy County, Florida</p>
+  </footer>
+
+</body>
+</html>
