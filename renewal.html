@@ -46,13 +46,14 @@
     }
 
     .site-name:hover { color: var(--cream); }
-
     nav {
       background: var(--night);
       border-top: 1px solid rgba(143,166,138,0.2);
       padding: 0 2rem;
       display: flex;
+      flex-direction: row;        /* add this */
       justify-content: center;
+      flex-wrap: wrap;            /* add this */
     }
 
     nav a {
